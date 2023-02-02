@@ -1,41 +1,12 @@
-# Welcome to Remix!
+# recommend-o-tron-books
 
-- [Remix Docs](https://remix.run/docs)
+The purpose of this project is to recommend books based on your reader-tracker apps, like skoob, goodreads, thestorygraph, etc.
 
-## Fly Setup
+Currently working on a 0.0.1 working version.
 
-1. [Install `flyctl`](https://fly.io/docs/getting-started/installing-flyctl/)
+## Techs
 
-2. Sign up and log in to Fly
-
-```sh
-flyctl auth signup
-```
-
-3. Setup Fly. It might ask if you want to deploy, say no since you haven't built the app yet.
-
-```sh
-flyctl launch
-```
-
-## Development
-
-From your terminal:
-
-```sh
-npm run dev
-```
-
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-If you've followed the setup instructions already, all you need to do is run this:
-
-```sh
-npm run deploy
-```
-
-You can run `flyctl info` to get the url and ip address of your server.
-
-Check out the [fly docs](https://fly.io/docs/getting-started/node/) for more information.
+- Remix
+- Fly
+- NodeJS (express)
+- openai
