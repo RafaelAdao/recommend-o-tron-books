@@ -37,7 +37,7 @@ export default function Index() {
   return (
     <div className="wrapper">
       <form className="header" onSubmit={handleSubmit}>
-        <label for="profileUrl">Link do perfil do Skoob</label>
+        <label htmlFor="profileUrl">Link do perfil do Skoob</label>
         <input
           style={{ margin: '0px 4px' }}
           id="profileUrl"
