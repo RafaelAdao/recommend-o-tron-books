@@ -16,10 +16,10 @@ export default function Index() {
   const handleSubmit = async event => {
     event.preventDefault()
 
-    if (!profileURL.match(/https:\/\/www.skoob.com.br\/usuario\/\d+/)) {
-      alert(`Link inválido: ${profileURL}`)
-      return
-    }
+    // if (!profileURL.match(/https:\/\/www.skoob.com.br\/usuario\/\d+/)) {
+    //   alert(`Link inválido: ${profileURL}`)
+    //   return
+    // }
     setLoading(true)
     const response = await fetch('http://localhost:3001/profile', {
       method: 'POST',
@@ -53,7 +53,7 @@ export default function Index() {
         {loading ? (
           <p>Loading...</p>
         ) : data ? (
-          <>
+          <div className="paper">
             <h2>Recomendações</h2>
             <ul>
               {data.recommendations.map(book => (
@@ -66,7 +66,7 @@ export default function Index() {
                 <li key={book.id}>{book.title}</li>
               ))}
             </ul>
-          </>
+          </div>
         ) : null}
       </article>
     </div>

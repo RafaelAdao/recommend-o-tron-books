@@ -1,8 +1,8 @@
 .wrapper {
-  display: flex;  
+  display: flex;
   flex-flow: row wrap;
   font-weight: bold;
-  text-align: center; 
+  text-align: center;
 }
 
 .wrapper > * {
@@ -11,7 +11,6 @@
 }
 
 .header {
-  
 }
 
 .footer {
@@ -31,17 +30,66 @@
 }
 
 @media all and (min-width: 600px) {
-  .aside { flex: 1 0 0; }
+  .aside {
+    flex: 1 0 0;
+  }
 }
 
 @media all and (min-width: 800px) {
-  .main    { flex: 3 0px; }
-  .aside-1 { order: 1; } 
-  .main    { order: 2; }
-  .aside-2 { order: 3; }
-  .footer  { order: 4; }
+  .main {
+    flex: 3 0px;
+  }
+  .aside-1 {
+    order: 1;
+  }
+  .main {
+    order: 2;
+  }
+  .aside-2 {
+    order: 3;
+  }
+  .footer {
+    order: 4;
+  }
 }
 
 body {
   padding: 2em;
+}
+
+.paper {
+  background: #fff;
+  padding: 30px;
+  position: relative;
+}
+
+.paper,
+.paper::before,
+.paper::after {
+  /* Styles to distinguish sheets from one another */
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
+  border: 1px solid #bbb;
+}
+
+.paper::before,
+.paper::after {
+  content: '';
+  position: absolute;
+  height: 95%;
+  width: 99%;
+  background-color: #eee;
+}
+
+.paper::before {
+  right: 15px;
+  top: 0;
+  transform: rotate(-1deg);
+  z-index: -1;
+}
+
+.paper::after {
+  top: 5px;
+  right: -5px;
+  transform: rotate(1deg);
+  z-index: -2;
 }
