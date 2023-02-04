@@ -36,19 +36,22 @@ export default function Index() {
 
   return (
     <div className="wrapper">
-      <form className="header" onSubmit={handleSubmit}>
-        <label htmlFor="profileUrl">Link do perfil do Skoob</label>
-        <input
-          style={{ margin: '0px 4px' }}
-          id="profileUrl"
-          size="50"
-          type="url"
-          placeholder="https://www.skoob.com.br/usuario/123456"
-          value={profileURL}
-          onChange={event => setProfileURL(event.target.value)}
-        />
-        <button type="submit">OK</button>
-      </form>
+      <div className="header">
+        <h1>Recommend-o-tron Books</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="profileUrl">Link do perfil do Skoob</label>
+          <input
+            style={{ margin: '0px 4px' }}
+            id="profileUrl"
+            size="50"
+            type="url"
+            placeholder="https://www.skoob.com.br/usuario/123456"
+            value={profileURL}
+            onChange={event => setProfileURL(event.target.value)}
+          />
+          <button type="submit">OK</button>
+        </form>
+      </div>
       <article className="main">
         {loading ? (
           <p>Loading...</p>
