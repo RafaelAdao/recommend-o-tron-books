@@ -10,3 +10,11 @@ Currently working on a 0.0.1 working version.
 - Fly
 - NodeJS (express)
 - openai
+
+### Running
+
+```sh
+make setup
+make run
+make fake-server
+```
