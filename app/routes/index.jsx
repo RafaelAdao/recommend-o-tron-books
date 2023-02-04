@@ -20,6 +20,7 @@ export default function Index() {
     //   alert(`Link inválido: ${profileURL}`)
     //   return
     // }
+
     setLoading(true)
     const response = await fetch('http://localhost:3001/profile', {
       method: 'POST',
