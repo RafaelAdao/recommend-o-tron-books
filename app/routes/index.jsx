@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import styles from './styles.css'
+import styles from '~/styles/global.css'
 
 export const links = () => [
   {
@@ -69,9 +69,6 @@ export default function Index() {
           </>
         ) : null}
       </article>
-      {/* <aside className="aside aside-1">Aside 1</aside>
-      <aside className="aside aside-2">Aside 2</aside>
-      <footer className="footer">Footer</footer> */}
     </div>
   )
 }
