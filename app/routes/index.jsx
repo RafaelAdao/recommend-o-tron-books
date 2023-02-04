@@ -1,15 +1,23 @@
 import { useState } from 'react'
+import styles from './styles.css'
+
+export const links = () => [
+  {
+    rel: 'stylesheet',
+    href: styles
+  }
+]
 
 export default function Index() {
   const [profileURL, setProfileURL] = useState('')
-  const [bookList, setBookList] = useState([])
+  const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async event => {
     event.preventDefault()
 
     if (!profileURL.match(/https:\/\/www.skoob.com.br\/usuario\/\d+/)) {
-      alert('Link inválido')
+      alert(`Link inválido: ${profileURL}`)
       return
     }
     setLoading(true)
@@ -21,35 +29,49 @@ export default function Index() {
       body: JSON.stringify({ profileURL })
     })
 
-    const { books } = await response.json()
-    setBookList(books)
+    const data = await response.json()
+    setData(data)
     setLoading(false)
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Link do perfil do Skoob
-          <input
-            type="text"
-            value={profileURL}
-            onChange={event => setProfileURL(event.target.value)}
-          />
-        </label>
+    <div className="wrapper">
+      <form className="header" onSubmit={handleSubmit}>
+        <label for="profileUrl">Link do perfil do Skoob</label>
+        <input
+          style={{ margin: '0px 4px' }}
+          id="profileUrl"
+          size="50"
+          type="url"
+          placeholder="https://www.skoob.com.br/usuario/123456"
+          value={profileURL}
+          onChange={event => setProfileURL(event.target.value)}
+        />
         <button type="submit">OK</button>
       </form>
-      {loading ? (
-        <p>Loading...</p>
-      ) : (
-        bookList.length > 0 && (
-          <ul>
-            {bookList.map(book => (
-              <li key={book.id}>{book.title}</li>
-            ))}
-          </ul>
-        )
-      )}
+      <article className="main">
+        {loading ? (
+          <p>Loading...</p>
+        ) : data ? (
+          <>
+            <h2>Recomendações</h2>
+            <ul>
+              {data.recommendations.map(book => (
+                <li key={book.id}>{book.title}</li>
+              ))}
+            </ul>
+            <h2>Baseadas em</h2>
+            <ul>
+              {data.based.map(book => (
+                <li key={book.id}>{book.title}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
+      </article>
+      {/* <aside className="aside aside-1">Aside 1</aside>
+      <aside className="aside aside-2">Aside 2</aside>
+      <footer className="footer">Footer</footer> */}
     </div>
   )
 }
