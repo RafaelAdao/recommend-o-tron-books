@@ -1,3 +1,4 @@
+import { useLoaderData } from '@remix-run/react'
 import { useState } from 'react'
 import styles from '~/styles/global.css'
 
@@ -8,7 +9,12 @@ export const links = () => [
   }
 ]
 
+export async function loader() {
+  return process.env.SERVER_URL
+}
+
 export default function Index() {
+  const SERVER_URL = useLoaderData(loader)
   const [profileURL, setProfileURL] = useState('')
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -22,7 +28,7 @@ export default function Index() {
     // }
 
     setLoading(true)
-    const response = await fetch('http://localhost:3001/profile', {
+    const response = await fetch(`${SERVER_URL}/profile`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
