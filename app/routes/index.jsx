@@ -15,27 +15,33 @@ export async function loader() {
 
 export default function Index() {
   const SERVER_URL = useLoaderData(loader)
-  const [profileURL, setProfileURL] = useState('')
+  const [profileUrl, setProfileUrl] = useState('')
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async event => {
     event.preventDefault()
 
-    // if (!profileURL.match(/https:\/\/www.skoob.com.br\/usuario\/\d+/)) {
-    //   alert(`Link inválido: ${profileURL}`)
+    // if (!profileUrl.match(/https:\/\/www.skoob.com.br\/usuario\/\d+/)) {
+    //   alert(`Link inválido: ${profileUrl}`)
     //   return
     // }
 
     setLoading(true)
-    const response = await fetch(`${SERVER_URL}/profile`, {
+    const response = await fetch(`${SERVER_URL}/v1/profile`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ profileURL })
+      body: JSON.stringify({ profileUrl })
     })
 
+    if (!response.ok) {
+      const { error } = await response.json()
+      alert(error)
+      setLoading(false)
+      return
+    }
     const data = await response.json()
     setData(data)
     setLoading(false)
@@ -53,8 +59,8 @@ export default function Index() {
             size="50"
             type="url"
             placeholder="https://www.skoob.com.br/usuario/123456"
-            value={profileURL}
-            onChange={event => setProfileURL(event.target.value)}
+            value={profileUrl}
+            onChange={event => setProfileUrl(event.target.value)}
           />
           <button type="submit">OK</button>
         </form>
@@ -73,7 +79,9 @@ export default function Index() {
             <h2>Baseadas em</h2>
             <ul>
               {data.based.map(book => (
-                <li key={book.id}>{book.title}</li>
+                <li key={book.id}>
+                  {book.title} - ranking: {book.ranking}
+                </li>
               ))}
             </ul>
           </div>

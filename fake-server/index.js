@@ -17,14 +17,15 @@ app.get('/', (req, res) => {
   res.send('Hello World')
 })
 
-app.post('/profile', async (req, res) => {
+app.post('/v1/profile', async (req, res) => {
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
   await delay(500)
   const profileUrl = req.body.profileUrl
   res.json({
     based: [
-      { id: 1, title: 'My favorite book' },
-      { id: 2, title: 'My second favorite book' }
+      { id: 1, title: 'My favorite book', ranking: 5 },
+      { id: 2, title: 'My second favorite book', ranking: 4 },
+      { id: 2, title: 'My third favorite book', ranking: 5 }
     ],
     recommendations: [
       { id: 1, title: 'Book 1' },
