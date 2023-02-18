@@ -67,7 +67,17 @@ export default function Index() {
       </div>
       <article className="main">
         {loading ? (
-          <p>Loading...</p>
+          <div class="library">
+            <div class="bot">
+              <div class="head"></div>
+              <div class="body">
+                <div class="book"></div>
+                <div class="book"></div>
+                <div class="book"></div>
+              </div>
+            </div>
+            <p style={{ marginLeft: '4px' }}>Buscando recomendações...</p>
+          </div>
         ) : data ? (
           <div className="paper">
             <h2>Recomendações</h2>
@@ -80,7 +90,7 @@ export default function Index() {
             <ul>
               {data.based.map(book => (
                 <li key={book.id}>
-                  {book.title} - ranking: {book.ranking}
+                  {book.title} - ranking: {book.ranking} - {book.readDate}
                 </li>
               ))}
             </ul>

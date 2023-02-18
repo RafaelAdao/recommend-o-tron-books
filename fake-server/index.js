@@ -19,19 +19,66 @@ app.get('/', (req, res) => {
 
 app.post('/v1/profile', async (req, res) => {
   const delay = ms => new Promise(resolve => setTimeout(resolve, ms))
-  await delay(500)
+  await delay(2000)
   const profileUrl = req.body.profileUrl
+  const readedBooks = [
+    {
+      id: 1,
+      title: 'My favorite book',
+      ranking: 5,
+      readDate: '2015-06-10 00:06:21'
+    },
+    {
+      id: 2,
+      title: 'My second favorite book',
+      ranking: 4,
+      readDate: '2015-06-02 07:06:44'
+    },
+    {
+      id: 3,
+      title: 'My third favorite book',
+      ranking: 5,
+      readDate: '2014-01-01 00:00:00'
+    }
+  ]
+  const based = readedBooks.sort((a, b) => {
+    if (a.ranking > b.ranking) {
+      return -1
+    }
+    if (a.ranking < b.ranking) {
+      return 1
+    }
+    if (a.readDate > b.readDate) {
+      return -1
+    }
+    if (a.readDate < b.readDate) {
+      return 1
+    }
+    return 0
+  })
+
+  const chat = `
+
+
+1. O Poder do Hábito: Por Que Fazemos o Que Fazemos na Vida e nos Negócios, de Charles Duhigg 
+2. O Cérebro de Buda: A Ciência da Meditação para a Transformação Pessoal, de Rick Hanson 
+3. O Poder dos Mitos: Como Eles Moldam Nossas Vidas, de Joseph Campbell 
+4. A Mente Inovadora: Um Guia Prático para Melhorar a Criatividade, de Michael Michalko 
+5. Inteligência Emocional 2.0, de Travis Bradberry`
+
+  const recommendations = chat
+    .split('\n')
+    .filter(line => line.trim() !== '')
+    .map((line, index) => {
+      return {
+        id: index,
+        title: line.trim()
+      }
+    })
+
   res.json({
-    based: [
-      { id: 1, title: 'My favorite book', ranking: 5 },
-      { id: 2, title: 'My second favorite book', ranking: 4 },
-      { id: 2, title: 'My third favorite book', ranking: 5 }
-    ],
-    recommendations: [
-      { id: 1, title: 'Book 1' },
-      { id: 2, title: 'Book 2' },
-      { id: 3, title: 'Book 3' }
-    ]
+    based,
+    recommendations
   })
 })
 

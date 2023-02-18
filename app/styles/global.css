@@ -25,7 +25,6 @@ article {
 
 .main {
   text-align: left;
- 
 }
 
 .aside-1 {
@@ -100,4 +99,87 @@ body {
   right: -5px;
   transform: rotate(1deg);
   z-index: -2;
+}
+
+.library {
+  background-color: bisque;
+  height: 200px;
+  width: 400px;
+  position: relative;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bot {
+  position: absolute;
+  bottom: 0;
+  left: 150px;
+  transform: rotate(-5deg);
+  animation: moveBot 1s infinite ease-in-out;
+}
+
+.head {
+  background-color: #555;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto;
+  transform: translateY(-20px);
+}
+
+.body {
+  width: 40px;
+  height: 80px;
+  background-color: #555;
+  margin: 0 auto;
+  transform: translateY(-20px);
+}
+
+.book {
+  width: 20px;
+  height: 30px;
+  background-color: #d23f31;
+  border-radius: 3px;
+  position: absolute;
+  top: 30px;
+  left: 10px;
+  animation: moveBook 2s infinite alternate ease-in-out;
+}
+
+.book:nth-child(2) {
+  top: 20px;
+  left: 30px;
+  animation-delay: 0.5s;
+}
+
+.book:nth-child(3) {
+  top: 25px;
+  left: 50px;
+  animation-delay: 1s;
+}
+
+@keyframes moveBot {
+  0% {
+    transform: rotate(-5deg) translateX(0);
+  }
+  50% {
+    transform: rotate(5deg) translateX(10px);
+  }
+  100% {
+    transform: rotate(-5deg) translateX(0);
+  }
+}
+
+@keyframes moveBook {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
