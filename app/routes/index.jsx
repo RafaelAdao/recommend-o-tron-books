@@ -22,10 +22,10 @@ export default function Index() {
   const handleSubmit = async event => {
     event.preventDefault()
 
-    // if (!profileUrl.match(/https:\/\/www.skoob.com.br\/usuario\/\d+/)) {
-    //   alert(`Link inválido: ${profileUrl}`)
-    //   return
-    // }
+    if (!profileUrl.match(/https:\/\/www.skoob.com.br\/usuario\/\d+/)) {
+      alert(`Link inválido: ${profileUrl}`)
+      return
+    }
 
     setLoading(true)
     const response = await fetch(`${SERVER_URL}/v1/profile`, {
@@ -86,7 +86,7 @@ export default function Index() {
                 <li key={book.id}>{book.title}</li>
               ))}
             </ul>
-            <h2>Baseadas em</h2>
+            <h2>Baseadas nos seus últimos livros favoritos</h2>
             <ul>
               {data.based.map(book => (
                 <li key={book.id}>
