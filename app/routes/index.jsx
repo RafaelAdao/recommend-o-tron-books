@@ -33,7 +33,7 @@ export default function Index() {
       action: 'search',
       category: 'engagement',
       label: 'search_term',
-      value: profileUrl,
+      value: profileUrl
     })
 
     setLoading(true)
