@@ -64,6 +64,20 @@ body {
   background-image: url('../images/background.png');
 }
 
+.button {
+  background-color: #252746;
+  border: none;
+  color: white;
+  padding: 4px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 .paper {
   background: rgb(236, 223, 202);
   padding: 30px;

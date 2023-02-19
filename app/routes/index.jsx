@@ -71,7 +71,9 @@ export default function Index() {
             value={profileUrl}
             onChange={event => setProfileUrl(event.target.value)}
           />
-          <button type="submit">OK</button>
+          <button className="button" type="submit">
+            Recomendar!
+          </button>
         </form>
       </div>
       <article className="main">
