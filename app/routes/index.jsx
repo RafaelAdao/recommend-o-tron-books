@@ -2,6 +2,8 @@ import { useLoaderData } from '@remix-run/react'
 import { useState } from 'react'
 import styles from '~/styles/global.css'
 
+import * as gtag from '~/utils/gtags.client'
+
 export const links = () => [
   {
     rel: 'stylesheet',
@@ -26,6 +28,12 @@ export default function Index() {
       alert(`Link inválido: ${profileUrl}`)
       return
     }
+
+    gtag.event({
+      action: 'recommendation_request',
+      category: 'Recommend',
+      label: profileUrl
+    })
 
     setLoading(true)
     const response = await fetch(`${SERVER_URL}/v1/profile`, {
@@ -89,9 +97,7 @@ export default function Index() {
             <h2>Baseadas nos seus últimos livros favoritos</h2>
             <ul>
               {data.based.map(book => (
-                <li key={book.id}>
-                  {book.title} - ranking: {book.ranking} - {book.readDate}
-                </li>
+                <li key={book.id}>{book.title}</li>
               ))}
             </ul>
           </div>
