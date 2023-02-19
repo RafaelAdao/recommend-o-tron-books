@@ -30,9 +30,10 @@ export default function Index() {
     }
 
     gtag.event({
-      action: 'recommendation_request',
-      category: 'Recommend',
-      label: profileUrl
+      action: 'search',
+      category: 'engagement',
+      label: 'search_term',
+      value: profileUrl,
     })
 
     setLoading(true)
