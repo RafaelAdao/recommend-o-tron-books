@@ -69,11 +69,24 @@ export default function Index() {
     )
   }
 
+  const handleContactClick = () => {
+    gtag.event({
+      action: 'click',
+      category: 'engagement',
+      label: 'contact',
+      value: 'https://forms.gle/YhUWdEsXFpkDn24FA'
+    })
+    window.open('https://forms.gle/YhUWdEsXFpkDn24FA', '_blank')
+  }
+
   return (
     <div className="wrapper">
       <div className="header">
-        <button className="ghbutton" onClick={handleViewGitHubClick}>
-          View on GitHub
+        <button className="button top" onClick={handleViewGitHubClick}>
+          GitHub
+        </button>
+        <button className="button top" onClick={handleContactClick}>
+          Sugestões
         </button>
         <h1>Recommend-o-tron Books</h1>
         <form onSubmit={handleSubmit}>
