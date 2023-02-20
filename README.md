@@ -7,8 +7,7 @@ The purpose of this project is to recommend books based on your reader-tracker (
 0.0.1 version:
 - [x] recommend books based on your top last read books on [Skoob](https://www.skoob.com.br)
 
-Currently working on a 0.0.2 working version.
-Possibly features:
+Currently working on a 0.0.2 working version. Possible features:
 - [ ] don't recommend already read books
 - [ ] user can choose the recommendation category (non-fiction, horror, ...)
 
