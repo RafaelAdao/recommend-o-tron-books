@@ -56,9 +56,25 @@ export default function Index() {
     setLoading(false)
   }
 
+  const handleViewGitHubClick = () => {
+    gtag.event({
+      action: 'click',
+      category: 'engagement',
+      label: 'view_github',
+      value: 'https://github.com/RafaelAdao/recommend-o-tron-books'
+    })
+    window.open(
+      'https://github.com/RafaelAdao/recommend-o-tron-books',
+      '_blank'
+    )
+  }
+
   return (
     <div className="wrapper">
       <div className="header">
+        <button className="ghbutton" onClick={handleViewGitHubClick}>
+          View on GitHub
+        </button>
         <h1>Recommend-o-tron Books</h1>
         <form onSubmit={handleSubmit}>
           <label htmlFor="profileUrl">Link do perfil do Skoob</label>
