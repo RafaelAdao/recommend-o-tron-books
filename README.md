@@ -16,6 +16,7 @@ Currently working on a 0.0.2 working version. Possible features:
 
 - Frontend: [Remix](https://remix.run)
 - Backend: [NodeJS](https://nodejs.org/en/) with [Express.js](https://expressjs.com/) framework
+- Storage: [Cloud Firestore](https://firebase.google.com/docs/firestore)
 - Cloud: [Fly.io ](https://fly.io/)
 - Recommendations: [OpenAI](https://openai.com/)
 
