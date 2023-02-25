@@ -1,6 +1,8 @@
 # recommend-o-tron-books
 
-The purpose of this project is to recommend books based on your reader-tracker (like skoob, goodreads, thestorygraph, etc) apps data
+The purpose of this project is to recommend books based on your reader-tracker (like skoob, goodreads, thestorygraph, etc) apps data.
+
+It's not commercial purpose.
 
 ![image](https://user-images.githubusercontent.com/5923706/219982325-6f3842f6-101f-48a6-a80f-19b48d29b2b2.png)
 
@@ -27,6 +29,7 @@ The beautiful [background image](https://github.com/RafaelAdao/recommend-o-tron-
 ## Development
 
 ```sh
+cd frontend
 make setup
 make run
 make fake-server
