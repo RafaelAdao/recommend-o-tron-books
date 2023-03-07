@@ -83,20 +83,23 @@ app.post('/v1/profile', async (req, res) => {
     })
     .slice(0, 5)
 
-  const chat = await openai.createCompletion({
-    model: 'text-davinci-003',
-    prompt: `${process.env.PROMPT} ${based.map(v => v.title).join(',')}`,
-    temperature: 0.5,
-    max_tokens: 200,
-    top_p: 1,
-    frequency_penalty: 0.52,
-    presence_penalty: 0.5,
-    stop: ['11.']
+  const chat = await openai.createChatCompletion({
+    model: 'gpt-3.5-turbo-0301',
+    messages: [
+      {
+        role: 'system',
+        content: process.env.BEHAVIOR
+      },
+      {
+        role: 'user',
+        content: `${process.env.PROMPT} ${based.map(v => v.title).join(',')}`
+      }
+    ]
   })
 
   res.json({
     based,
-    recommendations: chat.data.choices[0].text
+    recommendations: chat.data.choices[0].message.content
       .split('\n')
       .filter(line => line.trim() !== '')
       .map((line, index) => {
