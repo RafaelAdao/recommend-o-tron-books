@@ -14,7 +14,7 @@ Currently working on a 0.0.2 working version. Possible features:
 - [ ] user can choose the recommendation category (non-fiction, horror, ...)
 
 
-## Techs
+## Tech Stack
 
 - Frontend: [Remix](https://remix.run)
 - Backend: [NodeJS](https://nodejs.org/en/) with [Express.js](https://expressjs.com/) framework
